@@ -5,13 +5,19 @@
 
 <div class="card-panel" style="margin-top: 4em;display: flex; justify-content: center; align-items: center;">
     {% if servicos %}
+
     <ul>
-        {% for servicos in servicos %}
-        <h5>{{ servicos }}</h5>
-        <li>Email para contato: {{ servicos.email }}</li>
-        <li>Preço: R${{ servicos.preco }}.00</li>
+        {% for servico in servicos %}
+        <a id="ancora-servicos" href="{% url 'servicosapp:detalhes_servicos' servico.id_servico %}">
+
+            <h5>{{ servico }}</h5>
+            <li>Email para contato: {{ servico.email }}</li>
+            <li>Preço: R${{ servico.preco }}.00</li>
+        </a>
+
         {% endfor %}
     </ul>
+
 </div>
 
 {% else %}

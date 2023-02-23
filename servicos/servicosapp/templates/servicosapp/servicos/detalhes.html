@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+<title>{% block title %}{{ servico }}{% endblock title %}</title>
+
+{% block content %}
+<div class="container servico-container">
+    <ul>
+        <h3>{{ servico }}</h3>
+
+        <div class="row">
+            <h5>Descrição</h5>
+            <li>{{ servico.descricao }}</li>
+        </div>
+
+        <div class="row">
+            <h5>Email</h5>
+            <li>{{ servico.email }}</li>
+        </div>
+
+        <h5>Telefones</h5>
+        <div class="row" style="display: flex; gap: 1em;">
+            <li>Telefone 1: {{ servico.telefone_1 }}</li>
+
+            <li>Telefone 2: {{ servico.telefone_2 }}</li>
+        </div>
+
+        <div class="row">
+            <h5>Preço</h5>
+            <li>{{ servico.preco }}</li>
+        </div>
+
+        <div class="row">
+            <h6>Publicado em</h6>
+            <li>{{ servico.data_pub }}</li>
+        </div>
+    </ul>
+</div>
+{% endblock content %}

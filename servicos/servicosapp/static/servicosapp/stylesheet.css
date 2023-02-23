@@ -86,3 +86,22 @@ body footer .fc {
 body main {
     min-height: 100vh;
 }
+
+body main div #searchbar {
+    border: none;
+}
+
+body main div #searchbar:focus {
+    box-shadow: none;
+}
+
+div #ancora-servicos {
+    color: black;
+}
+
+.servico-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 4em;
+}
