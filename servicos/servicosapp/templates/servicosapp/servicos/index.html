@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Bem vindo a página de Serviços</h1>
+<h3>Bem vindo a página de Serviços</h3>
 
-{% if categorias %}
-<ul>
-    {% for categoria in categorias %}
-    <li>{{ categoria }}</li>    
+{% if servicos %}
+<ul style="display: flex; justify-content: center; align-items: center;">
+    {% for servicos in servicos %}
+    <li>{{ servicos }}</li> 
+    <li>{{ servicos.email }}</li>
+    <li>{{ servicos.preco }}</li>
     {% endfor %}
 </ul>
 {% else %}
-<p>Não há serviços cadastrados</p>
+<p style="text-align: center; margin-top: 4em;">Não há serviços cadastrados!</p>
 {% endif %}
 
 {% endblock content %}

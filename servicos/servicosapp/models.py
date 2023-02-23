@@ -1,3 +1,4 @@
+import django
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -14,13 +15,15 @@ class Categoria(models.Model):
 
 class Servico(models.Model):
     id_servico = models.AutoField(primary_key=True)
-    fk_usuario = models.ForeignKey(auth_user, on_delete=models.DO_NOTHING)
-    fk_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    fk_usuario = models.ForeignKey(auth_user, on_delete=models.DO_NOTHING, null=True)
+    fk_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True)
     titulo = models.CharField(max_length=150, null=False)
+    descricao = models.CharField(max_length=150, default=None)
     email = models.CharField(max_length=150, null=False)
-    telefone_1 = models.CharField(max_length=50)
-    telefone_2 = models.CharField(max_length=50)
-    preco = models.FloatField
+    telefone_1 = models.CharField(max_length=50, null=True)
+    telefone_2 = models.CharField(max_length=50, null=True)
+    preco = models.IntegerField(default=0, null=True)
+    data_pub = models.DateTimeField("Data de publicação", default=django.utils.timezone.now, null=True)
 
     def __str__(self):
         return self.titulo
