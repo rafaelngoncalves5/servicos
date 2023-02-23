@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+<title>{% block title %} Cadastre um serviço {% endblock title %}</title>
+
+{% block content %}
+<h3>Cadastre seu serviço</h3>
+
+<form action="{% url 'servicosapp:criar_servicos' %}" method="post">
+    {% csrf_token %}
+
+    <div id="titulo" class="row container">
+
+        <form>
+
+            <div class="row">
+                <label for="titulo">Titulo</label>
+                <input placeholder="Título" id="titulo" type="text" class="validate" />
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="johndoe@mail.com" id="email" type="email" class="validate">
+                    <label for="email">Email para contato</label>
+                </div>
+            </div>
+
+            <!-- Formulários de telefone -->
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Telefone 1" id="phone_1" type="text" class="validate">
+                    <label for="phone_1">Telefone 1</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input placeholder="Telefone 2" id="phone_2" type="text" class="validate">
+                    <label for="phone_2">Telefone 2</label>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <label for="preco">Preço</label>
+                <input placeholder="Preço" id="preco" type="number" class="validate" />
+            </div>
+
+            <button type="submit" class="submit-btn waves-effect waves-light btn-large" value="criar_servicos">Cadastrar</button>
+
+        </form>
+    </div>
+</form>
+
+{% endblock content %}

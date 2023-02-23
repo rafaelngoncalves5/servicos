@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Bem vindo a página de Serviços</h1>
+
+{% if categorias %}
+<ul>
+    {% for categoria in categorias %}
+    <li>{{ categoria }}</li>    
+    {% endfor %}
+</ul>
+{% else %}
+<p>Não há serviços cadastrados</p>
+{% endif %}
+
+{% endblock content %}

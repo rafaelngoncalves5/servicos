@@ -16,7 +16,17 @@
 </head>
 
 <body>
+    
+    <nav>
+        <div class="nav-wrapper">
+            <ul id="nav-mobile" class="right">
+                <li><a href="#">Login</a></li>
+                <li><a class="login-btn waves-effect waves-light btn" href="#">Cadastrar um serviço</a></li>
+            </ul>
+        </div>
+    </nav>
+
     {% block content %}{% endblock content %}
 
-<script type="text/javascript" src="{% static 'materialize.js' %}"></script>
+    <script type="text/javascript" src="{% static 'materialize.js' %}"></script>
 </body>

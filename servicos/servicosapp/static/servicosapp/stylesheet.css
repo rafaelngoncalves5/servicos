@@ -15,14 +15,45 @@ body {
     background-color: var(--primary-color);
 }
 
-button {
+body button, .login-btn {
     background-color: var(--accent-color) !important;
 }
 
-a {
+body a {
     color: var(--accent-color);
 }
 
-a:hover {
+body a:hover {
     text-decoration: underline;
+}
+
+body h3 {
+    font-weight: 900;
+    text-align: center;
+}
+
+body .submit-btn {
+    display: flex;
+    margin: 0 auto 0 auto;
+}
+
+body button {
+    font-size: larger !important;
+}
+
+.login-btn:hover {
+    text-decoration: none;
+}
+
+nav {
+    background: transparent;
+    box-shadow: none;
+}
+
+nav li a {
+    color: var(--accent-color);
+}
+
+nav li a:hover {
+    background: transparent;
 }
