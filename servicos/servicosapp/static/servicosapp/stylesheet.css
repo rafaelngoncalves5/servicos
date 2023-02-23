@@ -15,7 +15,8 @@ body {
     background-color: var(--primary-color);
 }
 
-body button, .login-btn {
+body button,
+.login-btn {
     background-color: var(--accent-color) !important;
 }
 
@@ -45,15 +46,43 @@ body button {
     text-decoration: none;
 }
 
-nav {
+body nav {
     background: transparent;
     box-shadow: none;
 }
 
-nav li a {
+body nav li a {
     color: var(--accent-color);
 }
 
-nav li a:hover {
+body nav li a:hover {
     background: transparent;
+}
+
+body footer {
+    background: none !important;
+    text-align: center;
+    color: black;
+}
+
+body footer ul {
+    display: flex;
+    justify-content: center;
+    gap: 2vh;
+    margin-top: 4em;
+}
+
+body footer ul li a {
+    color: black;
+}
+
+
+body footer .fc {
+    margin-top: 4em;
+    background-color: var(--accent-color) !important;
+    color: var(--primary-color) !important;
+}
+
+body main {
+    min-height: 100vh;
 }

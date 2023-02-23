@@ -16,17 +16,40 @@
 </head>
 
 <body>
-    
+
     <nav>
         <div class="nav-wrapper">
             <ul id="nav-mobile" class="right">
                 <li><a href="#">Login</a></li>
-                <li><a class="login-btn waves-effect waves-light btn" href="#">Cadastrar um serviço</a></li>
+                <li><a class="login-btn waves-effect waves-light btn" href="{% url 'servicosapp:criar_servicos' %}">Cadastrar um serviço</a></li>
             </ul>
         </div>
     </nav>
 
-    {% block content %}{% endblock content %}
+    <main>
+        {% block content %}{% endblock content %}
+    </main>
+
+    <footer class="page-footer">
+        <div class="container"><!-- background: none !important; text-align: center; -->
+            <a href="#">Categorias</a>
+            <ul>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="{% url 'servicosapp:index' %}">Homepage</a></li>
+                <li><a href="{% url 'servicosapp:index_servicos' %}">Serviços</a></li>
+            </ul>
+
+        </div>
+        </div>
+        </div>
+
+        <div class="fc footer-copyright">
+            <div class="container">
+                © 2023 por Rafael N
+            </div>
+        </div>
+
+    </footer>
 
     <script type="text/javascript" src="{% static 'materialize.js' %}"></script>
 </body>
