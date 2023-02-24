@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+<title>{% block title %}Editar serviço{% endblock title %}</title>
+
+{% block content %}
+<h3>Editar serviço</h3>
+
+<form class="container" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button style="margin-top: 1em;" class="waves-effect waves-light btn-large submit-btn" type="submit"
+        value="Enviar">Alterar</button>
+</form>
+
+{% endblock content %}

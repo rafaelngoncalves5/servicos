@@ -44,4 +44,10 @@ def excluir_servico(request, id_servico):
        servico.delete()
 
        return render(request, 'servicosapp/servicos/excluir.html', {'id_servico': id_servico, 'servico': servico})
-       
+
+
+class EditarForm(generic.UpdateView):
+       model = Servico
+       fields = ['titulo', 'descricao', 'email', 'telefone_1', 'telefone_2', 'preco']
+       template_name = "servicosapp/servicos/editar.html"
+       success_url ="/servicosapp/servicos/"
