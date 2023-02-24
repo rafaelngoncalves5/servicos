@@ -9,4 +9,5 @@ urlpatterns = [
    path('servicos/criar/sucesso', views.sucesso, name="sucesso"),
    path('servicos/<int:pk>/detalhes', views.DetailView.as_view(), name="detalhes_servicos"),
    path('servicos/categorias', views.categorias, name='categorias'),
+   path('servicos/<int:id_servico>/excluir/', views.excluir_servico, name="excluir_servico"),
 ]

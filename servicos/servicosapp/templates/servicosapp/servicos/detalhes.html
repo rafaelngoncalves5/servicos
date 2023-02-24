@@ -3,13 +3,15 @@
 <title>{% block title %}{{ servico }}{% endblock title %}</title>
 
 {% block content %}
+
 <div class="container servico-container">
     <ul>
-        <h3>{{ servico }}</h3>
+        <h4>{{ servico }}</h4>
 
         <div class="row">
             <h5>Descrição</h5>
             <li>{{ servico.descricao }}</li>
+
         </div>
 
         <div class="row">
@@ -33,6 +35,17 @@
             <h6>Publicado em</h6>
             <li>{{ servico.data_pub }}</li>
         </div>
+        <button class="waves-effect waves-light btn-small" onclick="history.back()">Voltar</button>
+
+        <button id="excluir-btn" class="waves-effect waves-light btn-small red">Excluir</button>
+
+        <div id="confirma-div" style="margin-top: 2em; display: none;">
+            <p>Tem certeza que deseja excluir esse serviço? </p>
+            <a onclick="openModal()">Não</a>
+            <a href="/servicosapp/servicos/{{ servico.id_servico }}/excluir/">Sim</a>
+        </div>
+
     </ul>
 </div>
+
 {% endblock content %}

@@ -38,3 +38,10 @@ class DetailView(generic.DetailView):
 
 def categorias(request):
        return render(request, "servicosapp/servicos/categorias.html", {'categorias': Categoria.objects.all()})
+
+def excluir_servico(request, id_servico):
+       servico = get_object_or_404(Servico, pk=id_servico)
+       servico.delete()
+
+       return render(request, 'servicosapp/servicos/excluir.html', {'id_servico': id_servico, 'servico': servico})
+       
