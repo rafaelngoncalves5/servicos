@@ -6,7 +6,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db import IntegrityError
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 from . models import Servico, Categoria
 
@@ -92,6 +92,8 @@ def entrar_form(request):
               else:
                      # Tratar esse erro também na fase de testes
                      pass
-                     #return HttpResponseRedirect('servicosapp:entrar_form')
 
        return render(request, 'servicosapp/usuario/entrar.html')
+
+def sair(request):
+       logout(request)
