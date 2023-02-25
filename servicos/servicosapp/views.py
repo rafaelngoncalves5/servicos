@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.forms import ModelForm
 from django.views import generic
 from django import forms
@@ -97,3 +97,5 @@ def entrar_form(request):
 
 def sair(request):
        logout(request)
+       return redirect('servicosapp:index')
+
