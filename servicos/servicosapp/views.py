@@ -2,6 +2,10 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render
 from django.forms import ModelForm
 from django.views import generic
+from django import forms
+from django.contrib.auth.models import User
+from django.utils import timezone
+from django.db import IntegrityError
 
 from . models import Servico, Categoria
 
@@ -51,3 +55,24 @@ class EditarForm(generic.UpdateView):
        fields = ['titulo', 'descricao', 'email', 'telefone_1', 'telefone_2', 'preco']
        template_name = "servicosapp/servicos/editar.html"
        success_url ="/servicosapp/servicos/"
+
+def cadastrar_form(request):
+       if request.method == 'POST':
+              primeiro_nome = request.POST['primeiro_nome']
+              ultimo_nome = request.POST['ultimo_nome']
+              usuario = request.POST['usuario']
+              email = request.POST['email']
+              senha = request.POST['senha']
+
+              try:
+                     new_user = User.objects.create_user(f"{usuario}", f"{email}", f"{senha}")
+                     new_user.first_name = primeiro_nome
+                     new_user.last_name = ultimo_nome
+                     new_user.date_joined = timezone.now()
+                     new_user.save()
+
+
+              except IntegrityError:
+                     pass
+
+       return render(request, 'servicosapp/usuario/cadastrar.html')

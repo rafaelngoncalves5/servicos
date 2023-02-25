@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Cadastrar</h3>
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+{% if user.is_authenticated %}
+<p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+{% else %}
+<p>Please login to see this page.</p>
+{% endif %}
+{% endif %}
+
+<form style="margin-left: auto; margin-right: auto; margin-top: 6em;" class="container card-panel" method="post"
+    action="{% url 'servicosapp:cadastrar_form' %}">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <label for="primeiro_nome">Primeiro Nome: </label>
+            <input minlength="3" required name="primeiro_nome" id="primeiro_nome" placeholder="John"></input>
+        </tr>
+        <tr>
+            <label for="ultimo_nome">Último Nome: </label>
+            <input minlength="3" required name="ultimo_nome" id="ultimo_nome" placeholder="Doe"></input>
+        </tr>
+        <tr>
+            <label>Usuário: </label>
+            <input minlength="6" required name="usuario" id="usuario" placeholder="johndoe5"></input>
+        </tr>
+        <tr>
+            <label for="email">Email: </label>
+            <input required name="email" id="email" placeholder="johndoe@mail.com"></input>
+        </tr>
+        <tr>
+            <label for="senha">Senha: </label>
+            <input type="password" minlength="8" required name="senha" id="senha" placeholder="********"></input>
+        </tr>
+
+        {# Aqui tem que adicionar campo de confirmar senha #}
+
+    </table>
+
+    <button style="margin-top: 1em;" class="waves-effect waves-light btn-large submit-btn"
+        type="submit">Cadastrar</button>
+    <input type="hidden" name="next" value="{{ next }}">
+</form>
+
+{# Assumes you set up the password_reset view in your URLconf #}
+{# <p><a href="{% url 'password_reset' %}">Lost password?</a></p> #}
+
+{% endblock %}
