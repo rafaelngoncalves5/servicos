@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+<title>{% block title %}Buscando serviço de {{ query_check }} {% endblock title %}</title>
+
+{% block content %}
+<h3>Resultado da pesquisa: </h3>
+
+<div class="card-panel" style="margin-top: 4em;display: flex; justify-content: center; align-items: center;">
+    {% if servicos %}
+
+    <ul>
+        {% for servico in servicos %}
+        <a id="ancora-servicos" href="{% url 'servicosapp:detalhes_servicos' servico.id_servico %}">
+
+            <h5>{{ servico }}</h5>
+            <li>Email para contato: {{ servico.email }}</li>
+            <li>Preço: R${{ servico.preco }}.00</li>
+        </a>
+
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% else %}
+<p style="text-align: center; margin-top: 4em;">Não há serviços cadastrados!</p>
+{% endif %}
+
+{% endblock content %}

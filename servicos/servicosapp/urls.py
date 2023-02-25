@@ -14,4 +14,5 @@ urlpatterns = [
    path('usuario/cadastrar/', views.cadastrar_form, name="cadastrar_form"),
    path('usuario/entrar/', views.entrar_form, name='entrar_form'),
    path('usuario/sair/', views.sair, name="sair"),
+   path('servicos/buscar/', views.buscar, name='buscar'),
 ]

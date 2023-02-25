@@ -99,3 +99,14 @@ def sair(request):
        logout(request)
        return redirect('servicosapp:index')
 
+def buscar(request):
+       query_check = request.GET.get('titulo')
+
+       servicos = Servico.objects.filter(titulo__icontains = query_check)
+
+       context = {
+              'query_check': query_check,
+              'servicos': servicos
+       }
+
+       return render(request, 'servicosapp/servicos/buscar.html', context)

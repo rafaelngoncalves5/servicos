@@ -1,0 +1,7 @@
+<form method="get" action="{% url 'servicosapp:buscar' %}">
+    {% csrf_token %}
+    <div class="container row z-depth-4">
+        <input value="{{ request.get.name }}" name="titulo" placeholder="Encanemento" id="searchbar" type="text"></input>
+    </div>
+    <button type="submit" class="submit-btn waves-effect waves-light btn-large">Buscar</button>
+</form>
