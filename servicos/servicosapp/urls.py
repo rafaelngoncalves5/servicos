@@ -12,4 +12,6 @@ urlpatterns = [
    path('servicos/<int:id_servico>/excluir/', views.excluir_servico, name="excluir_servico"),
    path('servicos/<pk>/editar/', views.EditarForm.as_view(), name="editar_form"),
    path('usuario/cadastrar/', views.cadastrar_form, name="cadastrar_form"),
+   path('usuario/entrar/', views.entrar_form, name='entrar_form'),
+   
 ]

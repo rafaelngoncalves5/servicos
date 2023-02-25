@@ -1,0 +1,14 @@
+<nav>
+    <div class="nav-wrapper">
+        <ul id="nav-mobile" class="right">
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'servicosapp:entrar_form' %}">Olá {{ user.username }}. Sair</a></li>
+            {% else %}
+            <li><a href="{% url 'servicosapp:entrar_form' %}">Entrar</a></li>
+            {% endif %}
+
+            <li><a class="login-btn waves-effect waves-light btn"
+                    href="{% url 'servicosapp:criar_servicos' %}">Cadastrar um serviço</a></li>
+        </ul>
+    </div>
+</nav>

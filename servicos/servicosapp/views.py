@@ -6,6 +6,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db import IntegrityError
+from django.contrib.auth import authenticate, login
 
 from . models import Servico, Categoria
 
@@ -73,6 +74,24 @@ def cadastrar_form(request):
 
 
               except IntegrityError:
+                     # Tratar isso aqui na fase de testes
                      pass
 
        return render(request, 'servicosapp/usuario/cadastrar.html')
+
+def entrar_form(request):
+
+       if request.method == 'POST':
+              usuario = request.POST['usuario']
+              senha = request.POST['senha']
+
+              user = authenticate(request, username=usuario, password=senha)
+              if user is not None:
+                     login(request, user)
+                     
+              else:
+                     # Tratar esse erro também na fase de testes
+                     pass
+                     #return HttpResponseRedirect('servicosapp:entrar_form')
+
+       return render(request, 'servicosapp/usuario/entrar.html')

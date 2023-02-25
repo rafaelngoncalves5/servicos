@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>Cadastrar</h3>
+<h3>Entrar</h3>
 
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
@@ -16,24 +16,24 @@
 {% endif %}
 {% endif %}
 
-<form style="margin-left: auto; margin-right: auto; margin-top: 6em;" class="container card-panel" method="post" action="{% url 'servicosapp:cadastrar_usuario' %}">
+<form style="margin-left: auto; margin-right: auto; margin-top: 6em;" class="container card-panel" method="post" action="{% url 'servicosapp:entrar_form' %}">
     {% csrf_token %}
     <table>
         <tr>
-            <input minlength="6" required name="usuario" id="usuario" placeholder="Nome de usuário">{{ form.username.label_tag }}</input>
-            <label>{{ form.username }}</label>
+            <label>Usuário: </label>
+            <input minlength="6" required name="usuario" id="usuario"></input>
         </tr>
         <tr>
-            <input minlength="8" required name="senha" id="senha" placeholder="Senha">{{ form.password.label_tag }}</input>
-            <label for="senha">{{ form.password }}</label>
+            <label for="senha">Senha: </label>
+            <input type="password" minlength="8" required name="senha" id="senha"></input>
         </tr>
     </table>
 
-    <button style="margin-top: 1em;" class="waves-effect waves-light btn-large submit-btn" type="submit">Cadastrar</button>
+    <button style="margin-top: 1em;" class="waves-effect waves-light btn-large submit-btn" type="submit">Entrar</button>
     <input type="hidden" name="next" value="{{ next }}">
 </form>
 
 {# Assumes you set up the password_reset view in your URLconf #}
-{# <p><a href="{% url 'password_reset' %}">Lost password?</a></p> #}
+{# <p><a href="{% url 'password_reset' %}">Esqueceu sua senha?</a></p> #}
 
 {% endblock %}
