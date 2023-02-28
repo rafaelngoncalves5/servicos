@@ -8,6 +8,8 @@
 
     <ul>
         {% for servico in servicos %}
+        <a id="ancora-servicos" href="{% url 'servicosapp:editar_form' servico.id_servico %}">
+
         <a id="ancora-servicos" href="{% url 'servicosapp:detalhes_servicos' servico.id_servico %}">
 
             <h5>{{ servico }}</h5>

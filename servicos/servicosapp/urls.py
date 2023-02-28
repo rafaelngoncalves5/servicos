@@ -15,4 +15,6 @@ urlpatterns = [
    path('usuario/entrar/', views.entrar_form, name='entrar_form'),
    path('usuario/sair/', views.sair, name="sair"),
    path('servicos/buscar/', views.buscar, name='buscar'),
+   path('servicos/usuario/meus_servicos', views.meus_servicos, name='meus_servicos'),
+
 ]

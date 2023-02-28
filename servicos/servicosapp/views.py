@@ -21,10 +21,14 @@ def index_servicos(request):
        return render(request, 'servicosapp/servicos/index.html', context)
 
 def criar_servicos(request):
+       usuario_atual = request.user
+       u = User.objects.get(pk=usuario_atual.id)
 
        if request.method == "POST":
               f = ServicosForm(request.POST)
               servico_novo = f.save()
+              servico_novo.fk_usuario = u
+              servico_novo.save()
               HttpResponseRedirect('servicosapp/servicos/index.html')
 
        return render(request, 'servicosapp/servicos/criar.html', {'form': ServicosForm()})
@@ -55,7 +59,7 @@ class EditarForm(generic.UpdateView):
        model = Servico
        fields = ['titulo', 'descricao', 'email', 'telefone_1', 'telefone_2', 'preco']
        template_name = "servicosapp/servicos/editar.html"
-       success_url ="/servicosapp/servicos/"
+       success_url ="/servicosapp/usuario/meus_servicos/"
 
 def cadastrar_form(request):
        if request.method == 'POST':
@@ -70,6 +74,7 @@ def cadastrar_form(request):
                      new_user.first_name = primeiro_nome
                      new_user.last_name = ultimo_nome
                      new_user.date_joined = timezone.now()
+                     #new_user.get_username
                      new_user.save()
 
 
@@ -110,3 +115,16 @@ def buscar(request):
        }
 
        return render(request, 'servicosapp/servicos/buscar.html', context)
+
+def meus_servicos(request):
+
+       current_user = request.user
+       meus_servicos = Servico.objects.filter(fk_usuario = current_user.id)
+
+       # Pegar aqui os objetos do DB que tem fk_usuario = request.user
+       context = {
+            'current_user': current_user,
+            'meus_servicos': meus_servicos
+       }
+
+       return render(request, 'servicosapp/usuario/meus_servicos.html', context)

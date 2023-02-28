@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Meus serviços</h3>
+
+<a class="link-btn waves-effect waves-light btn-large" href="{% url 'servicosapp:criar_servicos' %}">Criar</a>
+
+<div class="card-panel" style="margin-top: 4em;display: flex; justify-content: center; align-items: center;">
+    {% if meus_servicos %}
+    <ul>
+        {% for meu_servico in meus_servicos %}
+        <a id="ancora-servicos" href="{% url 'servicosapp:detalhes_servicos' meu_servico.id_servico %}">
+
+            <h5>{{ meu_servico }}</h5>
+            <li>Email para contato: {{ meu_servico.email }}</li>
+            <li>Preço: R${{ meu_servico.preco }}.00</li>
+            <li><small>Publicado em: {{ meu_servico.data_pub }}</small></li>
+        </a>
+
+        <a href="/servicosapp/servicos/{{ meu_servico.id_servico }}/editar/"
+            class="waves-effect waves-light btn-small">Editar</a>
+
+        <a id="excluir-btn" class="waves-effect waves-light btn-small red" href="/servicosapp/servicos/{{ meu_servico.id_servico }}/excluir/">Excluir</a>
+
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% else %}
+<p style="text-align: center; margin-top: 4em;">Não há serviços cadastrados!</p>
+{% endif %}
+
+{% endblock content %}

@@ -10,3 +10,4 @@ function openModal() {
 }
 
 excluirBtn.addEventListener('click', () => openModal())
+
