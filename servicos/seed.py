@@ -1,6 +1,8 @@
 # Arquivo para semear o banco de dados, na tabela categoria com a lista ramos_de_atividade.txt
 
-# Fonte -> https://gist.github.com/prodis/857240
+# Fonte para a tabela de categoria -> https://gist.github.com/prodis/857240
+# Fonte para a tabela de municípios -> https://www.gov.br/economia/pt-br/assuntos/patrimonio-da-uniao/destinacao-de-imoveis/arquivos/2018/lista-municipios-excel.xls/view
+# Na tabela de municípios eu peguei D2:D291
 from servicosapp.models import Categoria
 
 def seed(ramo_de_atividade):
