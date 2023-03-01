@@ -12,7 +12,7 @@ class Categoria(models.Model):
 
     def __str__(self):
         return self.nome_categoria
-
+    
 class Servico(models.Model):
     id_servico = models.AutoField(primary_key=True)
     fk_usuario = models.ForeignKey(auth_user, on_delete=models.DO_NOTHING, null=True)
