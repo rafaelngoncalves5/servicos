@@ -4,7 +4,7 @@
 
 {% block content %}
 <h3>Cadastre seu serviço</h3>
-<form class="container" action="{% url 'servicosapp:criar_servicos' %}" method="post">
+<form id="dfd" class="container" action="{% url 'servicosapp:criar_servicos' %}" method="post">
     {% csrf_token %}
 
     {{ form }}

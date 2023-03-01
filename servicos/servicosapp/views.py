@@ -75,7 +75,7 @@ class EditarForm(generic.UpdateView):
        model = Servico
        fields = ['titulo', 'descricao', 'email', 'telefone_1', 'telefone_2', 'preco']
        template_name = "servicosapp/servicos/editar.html"
-       success_url ="/servicosapp/usuario/meus_servicos/"
+       success_url ="/servicosapp/servicos/usuario/meus_servicos"
 
 def cadastrar_form(request):
        if request.method == 'POST':
