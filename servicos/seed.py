@@ -3,10 +3,10 @@
 # Fonte para a tabela de categoria -> https://gist.github.com/prodis/857240
 # Fonte para a tabela de municípios -> https://www.gov.br/economia/pt-br/assuntos/patrimonio-da-uniao/destinacao-de-imoveis/arquivos/2018/lista-municipios-excel.xls/view
 # Na tabela de municípios eu peguei D2:D291
-from servicosapp.models import Categoria
+from servicosapp.models import Municipio
 
 def seed(ramo_de_atividade):
-    ramo_de_atividade = Categoria(nome_categoria=ramo_de_atividade)
+    ramo_de_atividade = Municipio(nome_municipio=ramo_de_atividade)
     # Salvando no banco de dados a tabela
     ramo_de_atividade.save()
 
@@ -19,7 +19,7 @@ Para executar o seed.py
 
 ATENÇÃO, EXECUTE UMA VEZ E COMENTE O CÓDIGO APÓS USO, POR SEGURANÇA
 
-- python manage.py seed
+- python manage.py
 - import seed
 '''
 
