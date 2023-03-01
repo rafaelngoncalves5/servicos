@@ -8,7 +8,7 @@ from django.utils import timezone
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
 
-from . models import Servico, Categoria
+from . models import Servico, Categoria, Municipio
 
 def index(request):
        return render(request, 'servicosapp/index.html')
@@ -22,22 +22,32 @@ def index_servicos(request):
 
 def criar_servicos(request):
        categorias = Categoria.objects.all()
+       municipios = Municipio.objects.all()
+
        usuario_atual = request.user
        u = User.objects.get(pk=usuario_atual.id)
 
        if request.method == "POST":
               categoria = request.POST['categoria']
+              municipio = request.POST['municipio']
               c = Categoria.objects.get(nome_categoria=categoria)
+              m = Municipio.objects.get(nome_municipio=municipio)
 
               f = ServicosForm(request.POST)
               servico_novo = f.save()
+
               servico_novo.fk_usuario = u
               servico_novo.save()
+
               servico_novo.fk_categoria_id = c
               servico_novo.save()
+
+              servico_novo.fk_municipio_id = m
+              servico_novo.save()
+
               HttpResponseRedirect('servicosapp/servicos/index.html')
 
-       return render(request, 'servicosapp/servicos/criar.html', {'form': ServicosForm(), 'categorias': categorias})
+       return render(request, 'servicosapp/servicos/criar.html', {'form': ServicosForm(), 'categorias': categorias, 'municipios': municipios})
 
 class ServicosForm(ModelForm):
        class Meta:

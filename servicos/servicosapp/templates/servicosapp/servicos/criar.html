@@ -9,12 +9,23 @@
 
     {{ form }}
 
-    <label for="categoria">Choose your browser from the list:</label>
-    <input list="browsers" name="categoria" id="categoria">
+    <!-- Select de categorias -->
+    <label for="categoria">Escolha uma categoria para seu serviço:</label>
+    <input required list="categorias" name="categoria" id="categoria">
 
-    <datalist id="browsers">
+    <datalist id="categorias">
         {% for categoria in categorias %}
         <option value="{{ categoria }}">
+        {% endfor %}
+    </datalist>
+
+    <!-- Select de municípios -->
+    <label for="municipio">Em qual município você presta esse serviço?</label>
+    <input required list="municipios" name="municipio" id="municipio">
+
+    <datalist id="municipios">
+        {% for municipio in municipios %}
+            <option value="{{ municipio }}">
         {% endfor %}
     </datalist>
 
