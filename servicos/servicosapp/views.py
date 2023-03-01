@@ -21,17 +21,23 @@ def index_servicos(request):
        return render(request, 'servicosapp/servicos/index.html', context)
 
 def criar_servicos(request):
+       categorias = Categoria.objects.all()
        usuario_atual = request.user
        u = User.objects.get(pk=usuario_atual.id)
 
        if request.method == "POST":
+              categoria = request.POST['categoria']
+              c = Categoria.objects.get(nome_categoria=categoria)
+
               f = ServicosForm(request.POST)
               servico_novo = f.save()
               servico_novo.fk_usuario = u
               servico_novo.save()
+              servico_novo.fk_categoria_id = c
+              servico_novo.save()
               HttpResponseRedirect('servicosapp/servicos/index.html')
 
-       return render(request, 'servicosapp/servicos/criar.html', {'form': ServicosForm()})
+       return render(request, 'servicosapp/servicos/criar.html', {'form': ServicosForm(), 'categorias': categorias})
 
 class ServicosForm(ModelForm):
        class Meta:

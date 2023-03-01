@@ -6,8 +6,20 @@
 <h3>Cadastre seu serviço</h3>
 <form class="container" action="{% url 'servicosapp:criar_servicos' %}" method="post">
     {% csrf_token %}
+
     {{ form }}
-    <button style="margin-top: 1em;" class="waves-effect waves-light btn-large submit-btn" type="submit" value="Enviar">Enviar</button>
+
+    <label for="categoria">Choose your browser from the list:</label>
+    <input list="browsers" name="categoria" id="categoria">
+
+    <datalist id="browsers">
+        {% for categoria in categorias %}
+        <option value="{{ categoria }}">
+        {% endfor %}
+    </datalist>
+
+    <button style="margin-top: 3em;" class="waves-effect waves-light btn-large submit-btn" type="submit"
+        value="Enviar">Enviar</button>
 </form>
 
 {% endblock content %}
