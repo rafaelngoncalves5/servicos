@@ -8,10 +8,10 @@
 
 ### O projeto contém
 
-* CRUD - Crie, Leia, Atualize e Delete serviços da sua página de serviços, caso esteja autenticado
-* Autenticação e Autorização - Sistema de autenticação e autorização de usuários
-* Barra de Pesquisa - Pesquise serviços de forma intuitiva e rápida
-* Página de Administração - Usando o modelo de admin do Django, dando controle completo as models
+* **CRUD** - Crie, Leia, Atualize e Delete serviços da sua página de serviços, caso esteja autenticado
+* **Autenticação e Autorização** - Sistema de autenticação e autorização de usuários
+* **Barra de Pesquisa** - Pesquise serviços de forma intuitiva e rápida
+* **Página de Administração** - Usando o modelo de admin do Django, dando controle completo as models
 
 ### Documentação
 
@@ -21,11 +21,11 @@ As models foram baseadas no seguinte diagrama:
 
 ![DER](https://user-images.githubusercontent.com/62622905/222154519-ebc311fb-3f15-4450-acae-5af2f3e82600.png)
 
-> Utilizei o **Materialize** para a UI, seguindo wireframes do **figma**
+> Utilizei o [Materialize](https://materializecss.com/) para a UI, seguindo wireframes do [Figma](https://www.figma.com/)
 
-> O backlog de produto foi totalmente feito usando a aba de projects do **GitHub**
+> O backlog de produto foi totalmente feito e gerenciado usando a aba de projects do ***GitHub***
 
-> Fiz testes manuais usando o shell do **manage.py** e testes unitários automatizados usando o **TestCase** do **Django**
+> Fiz testes manuais usando o shell do manage.py e testes unitários automatizados usando o ***TestCase*** do Django
 
 ### Requisitos Funcionais
 
