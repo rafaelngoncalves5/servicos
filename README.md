@@ -25,7 +25,7 @@ As models foram baseadas no seguinte diagrama:
 
 > O backlog de produto foi totalmente feito usando a aba de projects do **GitHub**
 
-> Fiz testes manuais usando o shell do **manage.py** e testes unitários usando o **TestCase** do **Django**
+> Fiz testes manuais usando o shell do **manage.py** e testes unitários automatizados usando o **TestCase** do **Django**
 
 ### Requisitos Funcionais
 
