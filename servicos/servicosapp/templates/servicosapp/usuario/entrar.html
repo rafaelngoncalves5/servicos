@@ -31,6 +31,8 @@
 
     <button style="margin-top: 1em;" class="waves-effect waves-light btn-large submit-btn" type="submit">Entrar</button>
     <input type="hidden" name="next" value="{{ next }}">
+    <a style="display: flex; justify-content: center;padding: 2em;" href="{% url 'servicosapp:cadastrar_form' %}">Criar conta</a>
+
 </form>
 
 {# Assumes you set up the password_reset view in your URLconf #}

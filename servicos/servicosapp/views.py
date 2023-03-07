@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 from . models import Servico, Categoria, Municipio
 
@@ -20,6 +21,21 @@ def index_servicos(request):
        }
        return render(request, 'servicosapp/servicos/index.html', context)
 
+@login_required(login_url="/servicosapp/usuario/entrar")
+def meus_servicos(request):
+
+       current_user = request.user
+       meus_servicos = Servico.objects.filter(fk_usuario = current_user.id)
+
+       # Pegar aqui os objetos do DB que tem fk_usuario = request.user
+       context = {
+            'current_user': current_user,
+            'meus_servicos': meus_servicos
+       }
+
+       return render(request, 'servicosapp/usuario/meus_servicos.html', context)
+
+@login_required(login_url="/servicosapp/usuario/entrar")
 def criar_servicos(request):
        categorias = Categoria.objects.all()
        municipios = Municipio.objects.all()
@@ -61,15 +77,12 @@ class DetailView(generic.DetailView):
     model = Servico
     template_name = 'servicosapp/servicos/detalhes.html'
 
-def categorias(request):
-       return render(request, "servicosapp/servicos/categorias.html", {'categorias': Categoria.objects.all()})
-
+@login_required(login_url="/servicosapp/usuario/entrar")
 def excluir_servico(request, id_servico):
        servico = get_object_or_404(Servico, pk=id_servico)
        servico.delete()
 
        return render(request, 'servicosapp/servicos/excluir.html', {'id_servico': id_servico, 'servico': servico})
-
 
 class EditarForm(generic.UpdateView):
        model = Servico
@@ -109,6 +122,7 @@ def entrar_form(request):
               user = authenticate(request, username=usuario, password=senha)
               if user is not None:
                      login(request, user)
+                     return redirect('/servicosapp/')
                      
               else:
                      # Tratar esse erro também na fase de testes
@@ -131,16 +145,3 @@ def buscar(request):
        }
 
        return render(request, 'servicosapp/servicos/buscar.html', context)
-
-def meus_servicos(request):
-
-       current_user = request.user
-       meus_servicos = Servico.objects.filter(fk_usuario = current_user.id)
-
-       # Pegar aqui os objetos do DB que tem fk_usuario = request.user
-       context = {
-            'current_user': current_user,
-            'meus_servicos': meus_servicos
-       }
-
-       return render(request, 'servicosapp/usuario/meus_servicos.html', context)
