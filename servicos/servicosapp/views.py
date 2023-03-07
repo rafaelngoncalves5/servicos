@@ -12,7 +12,9 @@ from django.contrib.auth.decorators import login_required
 from . models import Servico, Categoria, Municipio
 
 def index(request):
-       return render(request, 'servicosapp/index.html')
+       servicos = Servico.objects.all()
+
+       return render(request, 'servicosapp/index.html', {'servicos': servicos})
 
 def index_servicos(request):
        servicos = Servico.objects.all()

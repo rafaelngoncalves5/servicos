@@ -10,9 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} Encontre serviços {% endblock title %}</title>
 
+    <!-- Swiper -->
+    <link href="
+    https://cdn.jsdelivr.net/npm/swiper@9.1.0/swiper-bundle.min.css
+    " rel="stylesheet">
+
     <!-- Materialize -->
     <link rel="stylesheet" href="{% static 'materialize.css' %}">
     <link rel="stylesheet" href="{% static 'servicosapp/stylesheet.css' %}" />
+
 </head>
 
 <body>
@@ -20,6 +26,14 @@
     {% include 'navbar.html' %}
     <main>
         {% block content %}{% endblock content %}
+
+        <div class="fixed-action-btn">
+            <a style="background-color: var(--accent-color);" class="btn-floating btn-large"
+                href="{% url 'servicosapp:index' %}">
+                <img src="{% static 'servicosapp/images/homeicon.png' %}" />
+            </a>
+        </div>
+
     </main>
 
     <footer class="page-footer">
@@ -41,6 +55,7 @@
 
     </footer>
 
-    <script type="text/javascript" src="{% static 'materialize.js' %}"></script>
-    <script type="text/javascript" src="{% static 'script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9.1.0/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="{% static 'materialize.js' %}" async></script>
+    <script type="text/javascript" src="{% static 'servicosapp/script.js' %}" async></script>
 </body>

@@ -4,4 +4,56 @@
 <h3>Serviços</h3>
 
 {% include "searchbar.html" %}
+
+<!-- Demo styles -->
+<style>
+    .swiper {
+        margin-top: 2em;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
+
+<!-- Swiper -->
+
+<div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+        {% for servico in servicos %}
+        <div class="swiper-slide">
+            
+        </div>
+        {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+</script>
+
 {% endblock content %}
