@@ -8,38 +8,89 @@
 <!-- Demo styles -->
 <style>
     .swiper {
-        margin-top: 2em;
+        margin-top: 3em;
     }
 
     .swiper-slide {
         text-align: center;
-        font-size: 18px;
-        background: #fff;
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: snow;
     }
 
-    .swiper-slide img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .swiper-pagination-bullet-active {
+        background-color: snow !important;
     }
 </style>
 
 <!-- Swiper -->
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
-<div class="swiper mySwiper">
+<!-- Lista de publicados recentemente -->
+<h5 style="text-align: center; font-weight: 900;">Publicados recentemente</h5>
+
+<div class="swiper mySwiper card-panel" style="background-color: var(--accent-color);">
     <div class="swiper-wrapper">
         {% for servico in servicos %}
-        <div class="swiper-slide">
-            
+        <div class="swiper-slide card-panel">
+            <div class="row">
+                <div class="col">
+                    <div>
+                        <ul>
+                            <a href="{% url 'servicosapp:detalhes_servicos' servico.id_servico %}">
+                                <h5>{{ servico }}</h5>
+                            </a>
+                            <li>Email para contato: {{ servico.email }}</li>
+                            <li>Preço: R${{ servico.preco }}.00</li>
+                            <li>Publicado: {{ servico.data_pub }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         {% endfor %}
     </div>
     <div class="swiper-pagination"></div>
 </div>
+
+<br />
+<br />
+<br />
+<br />
+
+<!-- Lista de publicados aleatoriamente -->
+<h5 style="text-align: center; font-weight: 900;">Outros serviços</h5>
+
+<div class="swiper mySwiper card-panel" style="background-color: var(--accent-color);">
+    <div class="swiper-wrapper">
+        {% for servico in servicos_aleatorios %}
+        <div class="swiper-slide card-panel">
+            <div class="row">
+                <div class="col">
+                    <div>
+                        <ul>
+                            <a href="{% url 'servicosapp:detalhes_servicos' servico.id_servico %}">
+                                <h5>{{ servico }}</h5>
+                            </a>
+                            <li>Email para contato: {{ servico.email }}</li>
+                            <li>Preço: R${{ servico.preco }}.00</li>
+                            <li>Publicado: {{ servico.data_pub }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+
 
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>

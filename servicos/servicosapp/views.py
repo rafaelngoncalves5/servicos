@@ -12,9 +12,10 @@ from django.contrib.auth.decorators import login_required
 from . models import Servico, Categoria, Municipio
 
 def index(request):
-       servicos = Servico.objects.all()
+       servicos = Servico.objects.order_by("-data_pub")[:15]
+       servicos_aleatorios = Servico.objects.order_by("?")[:15]
 
-       return render(request, 'servicosapp/index.html', {'servicos': servicos})
+       return render(request, 'servicosapp/index.html', {'servicos': servicos, 'servicos_aleatorios': servicos_aleatorios})
 
 def index_servicos(request):
        servicos = Servico.objects.all()
