@@ -41,11 +41,17 @@
             <input type="password" minlength="8" required name="senha" id="senha" placeholder="********"></input>
         </tr>
 
+        <tr>
+            <label for="confirma-senha">Confirmar senha: </label>
+            <input type="password" minlength="8" required name="confirma-senha" id="confirma-senha"
+                placeholder="********"></input>
+        </tr>
+
         {# Aqui tem que adicionar campo de confirmar senha #}
 
     </table>
 
-    <button style="margin-top: 1em;" class="waves-effect waves-light btn-large submit-btn"
+    <button disabled id="sbtn" style="margin-top: 1em;" class="waves-effect waves-light btn-large submit-btn"
         type="submit">Cadastrar</button>
     <input type="hidden" name="next" value="{{ next }}">
 </form>
@@ -53,4 +59,18 @@
 {# Assumes you set up the password_reset view in your URLconf #}
 {# <p><a href="{% url 'password_reset' %}">Lost password?</a></p> #}
 
+
+<script async>
+var testeCondicional = () => confirmaSenha.value == senha.value? sBtn.disabled = false: sBtn.disabled = true;
+// Variável representando o input de senha
+var senha = document.getElementById('senha');
+senha.addEventListener('input', async() => testeCondicional());
+
+// Variável representando o input de confirmar senha
+var confirmaSenha = document.getElementById('confirma-senha');
+confirmaSenha.addEventListener('input', async() => testeCondicional());
+
+// Agora a gente pega o botão de submit
+var sBtn = document.getElementById('sbtn');
+</script>
 {% endblock %}
