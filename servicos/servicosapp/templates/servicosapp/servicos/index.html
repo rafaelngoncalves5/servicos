@@ -9,15 +9,13 @@
     <ul>
         {% for servico in servicos %}
         <a id="ancora-servicos" href="{% url 'servicosapp:editar_form' servico.id_servico %}">
-
-        <a id="ancora-servicos" href="{% url 'servicosapp:detalhes_servicos' servico.id_servico %}">
-
-            <h5>{{ servico }}</h5>
+            <a id="ancora-servicos" href="{% url 'servicosapp:detalhes_servicos' servico.id_servico %}">
+                <h5>{{ servico }}</h5>
+            </a>
             <li>Email para contato: {{ servico.email }}</li>
             <li>Preço: R${{ servico.preco }}.00</li>
-        </a>
 
-        {% endfor %}
+            {% endfor %}
     </ul>
 
 </div>
