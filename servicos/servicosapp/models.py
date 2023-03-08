@@ -13,18 +13,18 @@ class Categoria(models.Model):
     def __str__(self):
         return self.nome_categoria
     
-class Municipio(models.Model):
-    id_municipio = models.AutoField(primary_key=True)
-    nome_municipio = models.CharField(max_length=150)
+class Estado(models.Model):
+    id_estado = models.AutoField(primary_key=True)
+    nome_estado = models.CharField(max_length=150)
 
     def __str__(self):
-        return self.nome_municipio
+        return self.nome_estado
 
 class Servico(models.Model):
     id_servico = models.AutoField(primary_key=True)
     fk_usuario = models.ForeignKey(auth_user, on_delete=models.DO_NOTHING, null=True)
     fk_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True)
-    fk_municipio = models.ForeignKey(Municipio, on_delete=models.CASCADE, null=True)
+    fk_estado = models.ForeignKey(Estado, on_delete=models.CASCADE, null=True)
     titulo = models.CharField(max_length=150, null=False)
     descricao = models.CharField(max_length=150, default=None)
     email = models.CharField(max_length=150, null=False)
