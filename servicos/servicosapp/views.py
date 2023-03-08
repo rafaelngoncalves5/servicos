@@ -9,7 +9,7 @@ from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-from . models import Servico, Categoria, Municipio
+from . models import Servico, Categoria, Estado
 
 def index(request):
        servicos = Servico.objects.order_by("-data_pub")[:15]
@@ -41,16 +41,16 @@ def meus_servicos(request):
 @login_required(login_url="/servicosapp/usuario/entrar")
 def criar_servicos(request):
        categorias = Categoria.objects.all()
-       municipios = Municipio.objects.all()
+       estados = Estado.objects.all()
 
        usuario_atual = request.user
        u = User.objects.get(pk=usuario_atual.id)
 
        if request.method == "POST":
               categoria = request.POST['categoria']
-              municipio = request.POST['municipio']
+              estado = request.POST['estado']
               c = Categoria.objects.get(nome_categoria=categoria)
-              m = Municipio.objects.get(nome_municipio=municipio)
+              m = Estado.objects.get(nome_estado=estado)
 
               f = ServicosForm(request.POST)
               servico_novo = f.save()
@@ -61,12 +61,12 @@ def criar_servicos(request):
               servico_novo.fk_categoria_id = c
               servico_novo.save()
 
-              servico_novo.fk_municipio_id = m
+              servico_novo.fk_estado_id = m
               servico_novo.save()
 
               HttpResponseRedirect('servicosapp/servicos/index.html')
 
-       return render(request, 'servicosapp/servicos/criar.html', {'form': ServicosForm(), 'categorias': categorias, 'municipios': municipios})
+       return render(request, 'servicosapp/servicos/criar.html', {'form': ServicosForm(), 'categorias': categorias, 'estados': estados})
 
 class ServicosForm(ModelForm):
        class Meta:

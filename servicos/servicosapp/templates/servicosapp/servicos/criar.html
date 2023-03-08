@@ -19,13 +19,13 @@
         {% endfor %}
     </datalist>
 
-    <!-- Select de municípios -->
-    <label for="municipio">Em qual município você presta esse serviço?</label>
-    <input required list="municipios" name="municipio" id="municipio">
+    <!-- Select de estados -->
+    <label for="estado">Em qual estado você presta esse serviço?</label>
+    <input required list="estados" name="estado" id="estado">
 
-    <datalist id="municipios">
-        {% for municipio in municipios %}
-            <option value="{{ municipio }}">
+    <datalist id="estados">
+        {% for estado in estados %}
+            <option value="{{ estado }}">
         {% endfor %}
     </datalist>
 

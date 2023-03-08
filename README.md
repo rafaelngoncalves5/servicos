@@ -19,8 +19,7 @@
 Os documentos detalhados encontram-se presentes na pasta "docs" do projeto
 
 As models foram baseadas no seguinte diagrama:
-
-![DER](https://user-images.githubusercontent.com/62622905/222154519-ebc311fb-3f15-4450-acae-5af2f3e82600.png)
+![DER](https://user-images.githubusercontent.com/62622905/223637431-60366710-a6a7-487d-acf2-bb002e165623.png)
 
 > Utilizei o [Materialize](https://materializecss.com/) para a UI, seguindo wireframes do [Figma](https://www.figma.com/)
 
