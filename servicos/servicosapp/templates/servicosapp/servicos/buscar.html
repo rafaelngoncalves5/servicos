@@ -12,11 +12,14 @@
         {% for servico in servicos %}
         <ul class="card-panel indigo lighten-5">
             <a id="ancora-servicos" href="{% url 'servicosapp:detalhes_servicos' servico.id_servico %}">
-                <h5>{{ servico }}</h5>
+                <h5 style="font-weight: bolder;">{{ servico }}</h5>
             </a>
             <li>Email para contato: {{ servico.email }}</li>
             <li>Preço: R${{ servico.preco }}.00</li>
-            <li>Localizado em: {{ servico.fk_estado }}</li>
+            <br />
+            <span
+                style="opacity: 80%; background-color: #192a8d; border-radius: 2em; padding: 7px; font-size: smaller; font-weight: bold; border: solid 2px #758aff; color: #758aff; margin-left: auto; margin-right: auto; max-width: fit-content;">Localizado
+                em: {{ servico.fk_estado }}</span>
         </ul>
 
         {% endfor %}
