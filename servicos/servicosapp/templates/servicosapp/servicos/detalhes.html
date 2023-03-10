@@ -4,49 +4,83 @@
 
 {% block content %}
 
-<div class="container servico-container">
-    <ul>
+<div class="container servico-container z-depth-2">
+    <ul class="row">
         <h4 style="font-weight: bolder;">{{ servico }}</h4>
 
-        <div class="row">
-            <h5>Descrição</h5>
-            <li>{{ servico.descricao }}</li>
+        <div class="section"></div>
+        <div class="divider"></div>
+        <div class="section"></div>
+
+        <div style="padding: 1em;">
+            <h5 style="font-weight: bold;margin-bottom: 1em;">Descrição</h5>
+            <p>{{ servico.descricao }}</p>
         </div>
 
+        <div class="section"></div>
+        <div class="divider"></div>
+        <div class="section"></div>
+        
         <div class="row">
-            <h5>Email</h5>
-            <li>{{ servico.email }}</li>
+            <h5 style="font-weight: bold; margin-bottom: 1em;">Email</h5>
+            <span
+                style="opacity: 80%; background-color: #311b92; border-radius: 2em; padding: 7px; font-weight: bold; border: solid 2px #d1c4e9; color: #d1c4e9; margin-left: auto; margin-right: auto; max-width: fit-content;">
+                {{ servico.email }}</span>
+        </div>
+        
+        <div class="section"></div>
+        <div class="divider"></div>
+        <div class="section"></div>
+        
+
+        <h5 style="font-weight: bold; padding-bottom: 1em;padding-top: 1em;">Telefones</h5>
+
+        <div class="row" style="display: flex; gap: 1em; justify-content: center;">
+            <li
+                style="opacity: 80%; background-color: #0091ea; border-radius: 2em; padding: 7px; font-size: smaller; font-weight: bold; border: solid 2px #b3e5fc; color: #b3e5fc; max-width: fit-content;">
+                Telefone 1: {{ servico.telefone_1 }}</li>
+
+            <li
+                style="opacity: 80%; background-color: #095555; border-radius: 2em; padding: 7px; font-size: smaller; font-weight: bold; border: solid 2px #18ffff; color: #18ffff; max-width: fit-content;">
+                Telefone 2: {{ servico.telefone_2 }}</li>
         </div>
 
-        <h5>Telefones</h5>
-        <div class="row" style="display: flex; gap: 1em;">
-            <li>Telefone 1: {{ servico.telefone_1 }}</li>
 
-            <li>Telefone 2: {{ servico.telefone_2 }}</li>
-        </div>
-
-        <div class="row">
-            <h5>Localização</h5>
-            <li>{{ servico.fk_estado }}</li>
-        </div>
-
-        <div class="row">
-            <h5>Preço</h5>
+        <div class="section"></div>
+        <div class="divider"></div>
+        <br />
+        <div class="row"  style="margin-bottom: 2em;">
+            <h5 style="font-weight: bold;">Preço</h5>
             <li>R${{ servico.preco }}.00</li>
         </div>
+        
+        <div class="section"></div>
+        <div class="divider"></div>
+        <div class="section"></div>
+        
 
         <div class="row">
-            <h6>Publicado em</h6>
-            <li>{{ servico.data_pub }}</li>
+            <span
+                style="opacity: 80%; background-color: #695c17; border-radius: 2em; padding: 7px; font-weight: bold; border: solid 2px #fdd835; color: #fdd835; margin-left: auto; margin-right: auto; max-width: fit-content;">
+                Publicado em {{ servico.data_pub }}</span>
         </div>
 
         <div class="row">
-            <h6>Publicado por</h6>
-            <li>{{ servico.fk_usuario }}</li>
+            <span
+                style="opacity: 80%; background-color: #e65100; border-radius: 2em; padding: 7px; font-weight: bold; border: solid 2px #ffd180; color: #ffd180; margin-left: auto; margin-right: auto; max-width: fit-content;">
+                Publicado por {{ servico.fk_usuario }}</span>
         </div>
 
-        <button class="waves-effect waves-light btn-small" onclick="history.back()">Voltar</button>
+        <div>
+            <span
+                style="opacity: 80%; background-color: #192a8d; border-radius: 2em; padding: 7px; font-weight: bold; border: solid 2px #758aff; color: #758aff; margin-left: auto; margin-right: auto; max-width: fit-content;">Localizado
+                em: {{ servico.fk_estado }}</span>
+        </div>
 
+        <br />
+
+        <button style="margin-bottom: 2em; margin-top: 2em;" class="waves-effect waves-light btn-small"
+            onclick="history.back()">Voltar</button>
     </ul>
 </div>
 
