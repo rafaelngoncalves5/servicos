@@ -4,5 +4,20 @@
         <input minlength="4" value="{{ request.get.name }}" name="titulo" placeholder="Encanemento" id="searchbar"
             type="text"></input>
     </div>
-    <button id="sbtn" type="submit" class="submit-btn waves-effect waves-light btn-large">Buscar</button>
+    <button disabled id="sbtn" type="submit" class="submit-btn waves-effect waves-light btn-large">Buscar</button>
 </form>
+
+<script>
+    var btn = document.getElementById('sbtn');
+    var searchBar = document.getElementById('searchbar');
+
+    const testaNulo = () => {
+        if(searchBar.value !== "" && searchBar.value.length >= 4) {
+            btn.disabled = false;
+        } else {
+            btn.disabled = true;
+        }
+    }
+
+    searchBar.addEventListener('input', () => testaNulo())
+</script>
