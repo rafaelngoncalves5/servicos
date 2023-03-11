@@ -19,8 +19,11 @@ def index(request):
 
 def index_servicos(request):
        servicos = Servico.objects.all()
+       estados = Estado.objects.all()
+
        context = {
-              'servicos': servicos
+              'servicos': servicos,
+              'estados': estados
        }
        return render(request, 'servicosapp/servicos/index.html', context)
 
@@ -139,12 +142,17 @@ def sair(request):
 
 def buscar(request):
        query_check = request.GET.get('titulo')
+       query_estado = request.GET.get('filtro-estado')
 
        servicos = Servico.objects.filter(titulo__icontains = query_check)
 
        context = {
               'query_check': query_check,
-              'servicos': servicos
+              'servicos': servicos,
+              'query_estado': query_estado
        }
 
        return render(request, 'servicosapp/servicos/buscar.html', context)
+
+def filtros(request):
+       return render(request, 'filtros.html', {'text': 100000})
