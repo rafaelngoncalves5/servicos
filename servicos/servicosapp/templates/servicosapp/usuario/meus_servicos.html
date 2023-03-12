@@ -6,8 +6,8 @@
 <a style="background-color: var(--accent-color); max-width: max-content; text-decoration: none; display: block; margin-left: auto; margin-right: auto;"
     class="link-btn waves-effect waves-light btn-large" href="{% url 'servicosapp:criar_servicos' %}">Criar serviço</a>
 
+{% if meus_servicos %}
 <div class="card-panel" style="margin-top: 2em; display: flex; justify-content: center; align-items: center;">
-    {% if meus_servicos %}
     <ul>
         {% for meu_servico in meus_servicos %}
         <a id="ancora-servicos" href="{% url 'servicosapp:detalhes_servicos' meu_servico.id_servico %}">
@@ -19,7 +19,8 @@
 
         <a href="/servicosapp/servicos/{{ meu_servico.id_servico }}/editar/">Editar</a>
         |
-        <a style="cursor: pointer;" id="excluir-btn" href="/servicosapp/servicos/{{ meu_servico.id_servico }}/excluir/">Excluir</a>
+        <a style="cursor: pointer;" id="excluir-btn"
+            href="/servicosapp/servicos/{{ meu_servico.id_servico }}/excluir/">Excluir</a>
 
         <div class="section"></div>
         <div class="divider"></div>
@@ -30,7 +31,7 @@
 </div>
 
 {% else %}
-<p style="background: none; text-align: center; margin-top: 4em;">Não há serviços cadastrados!</p>
+<p style="text-align: center; margin-top: 4em;">Não há serviços cadastrados!</p>
 {% endif %}
 
 {% endblock content %}
