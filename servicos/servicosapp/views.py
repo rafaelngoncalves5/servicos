@@ -15,7 +15,7 @@ def index(request):
        servicos = Servico.objects.order_by("-data_pub")[:15]
        servicos_aleatorios = Servico.objects.order_by("?")[:15]
 
-       return render(request, 'servicosapp/index.html', {'servicos': servicos, 'servicos_aleatorios': servicos_aleatorios})
+       return render(request, 'servicosapp/index.html', {'servicos': servicos, 'servicos_aleatorios': servicos_aleatorios, 'estados': Estado.objects.all()})
 
 def index_servicos(request):
        servicos = Servico.objects.all()
@@ -144,15 +144,28 @@ def buscar(request):
        query_check = request.GET.get('titulo')
        query_estado = request.GET.get('filtro-estado')
 
-       servicos = Servico.objects.filter(titulo__icontains = query_check)
+       if not query_check:
+              pass
+       
+       else:
+              servicos = Servico.objects.filter(titulo__icontains = query_check)
 
-       context = {
-              'query_check': query_check,
-              'servicos': servicos,
-              'query_estado': query_estado
-       }
+              context = {
+                     'query_check': query_check,
+                     'servicos': servicos,
+              }
+              return render(request, 'servicosapp/servicos/buscar.html', context)
+       
+       if not query_estado:
+              pass
+       else:
+              se = Estado.objects.get(nome_estado = query_estado)
+              estados = Servico.objects.filter(fk_estado = se.id_estado)
 
-       return render(request, 'servicosapp/servicos/buscar.html', context)
+              context = {
+                     'query_estado': query_estado,
+                     'estados': estados
+              }
+              return render(request, 'servicosapp/servicos/buscar.html', context) 
 
-def filtros(request):
-       return render(request, 'filtros.html', {'text': 100000})
+       return render(request, 'servicosapp/servicos/buscar.html')

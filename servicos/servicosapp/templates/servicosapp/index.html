@@ -25,6 +25,26 @@
     }
 </style>
 
+<!-- Filtros -->
+<div style="background-color: var(--accent-color); margin: 4em auto 0 auto;" class="container card-panel">
+    <!-- Filtrando por estado -->
+    <form method="get" action="{% url 'servicosapp:buscar' %}">
+        {% csrf_token %}
+        {% for estado in estados %}
+        <label>
+            <input value="{{ estado }}" name="filtro-estado" type="radio" checked />
+            <span style="color: snow;">{{ estado }}</span>
+        </label>
+        {% endfor %}
+        <div class="row" style="display: flex; justify-content: center;">
+            <button style="font-weight: bold; color: black; min-width: fit-content;" type="submit"
+                class="waves-effect waves-light btn-small white">Filtrar</button>
+        </div>
+    </form>
+
+</div>
+<!--  -->
+
 <!-- Swiper -->
 <br />
 <br />
