@@ -8,6 +8,7 @@ from django.utils import timezone
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 from . models import Servico, Categoria, Estado
 
@@ -128,7 +129,7 @@ def entrar_form(request):
               user = authenticate(request, username=usuario, password=senha)
               if user is not None:
                      login(request, user)
-                     return redirect('/servicosapp/')
+                     return HttpResponseRedirect(reverse('servicosapp:index'))
                      
               else:
                      # Tratar esse erro também na fase de testes
